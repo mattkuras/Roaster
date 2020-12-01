@@ -1,6 +1,11 @@
 .tinder-card {
+    position: absolute;
     height: 600px;
     width: 40%;
     border: green solid 2px;
     margin: auto;
+}
+.card-container {
+    display: flex;
+    justify-content: center;
 }
