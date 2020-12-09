@@ -37,6 +37,8 @@ module Api
                 users = User.all
                 render json: users 
             end
+
+        
         
 
 

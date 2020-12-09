@@ -7,7 +7,7 @@ const App = () => {
 
   useEffect(() => {
     getProfiles();
-  });
+  }, profiles.length);
 
   const getProfiles = () => {
     Axios.get("http://localhost:3000/api/v1/users").then((resp) =>
