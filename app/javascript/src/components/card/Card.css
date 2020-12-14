@@ -1,0 +1,25 @@
+.tinder-card {
+    position: absolute;
+    height: 600px;
+    width: 40%;
+    border: green solid 2px;
+    margin: auto;
+}
+.card-container {
+    display: flex;
+    justify-content: center;
+}
+#like-button {
+    position: absolute;
+    bottom: 1px;
+    font-size: 2rem;
+    left: 1px;
+
+} 
+#dislike-button {
+    position: absolute;
+    bottom: 1px;
+    right: 1px;
+    font-size: 2rem;
+  
+} 
