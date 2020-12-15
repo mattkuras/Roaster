@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Card from "./components/card/Card.jsx";
 import {
   Route,
   Switch,
@@ -8,13 +7,18 @@ import {
   BrowserRouter as Router,
 } from "react-router-dom";
 import Axios from "axios";
+import "./App.css";
+import Card from "./components/card/Card.jsx";
 import Login from "./components/registrations/login.js";
+import SwipePage from "./components/swipePage/swipePage.js";
+import Navbar from "./components/navbar/navbar.js";
+import ProfilePage from "./components/profilePage/profilePage.js";
+import MessagePage from "./components/messagePage/messagePage.js";
 
 const App = () => {
   const [accounts, setAccounts] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [account, setAccount] = useState({})
-
+  const [account, setAccount] = useState({});
 
   useEffect(() => {
     getAccounts();
@@ -28,8 +32,7 @@ const App = () => {
   };
 
   const loginStatus = () => {
-    Axios
-      .get("/logged_in", { withCredentials: true })
+    Axios.get("http://localhost:3000/logged_in", { withCredentials: true })
       .then((response) => {
         setAccount(response.data.account);
         response.data.logged_in ? setIsLoggedIn(true) : setIsLoggedIn(false);
@@ -40,7 +43,6 @@ const App = () => {
   const handleLogin = (data) => {
     setAccount(data.account);
     setIsLoggedIn(true);
-
   };
   const handleLogout = () => {
     setIsLoggedIn(false);
@@ -57,8 +59,22 @@ const App = () => {
     <Router>
       <div className="app">
         <Switch>
+        <Route exact path="/swipe">
+            {" "}
+            <SwipePage />
+            {isLoggedIn ? null : <Redirect to="/login" />}
+          </Route>
+          <Route exact path="/profile">
+            {" "}
+            <ProfilePage />
+            {isLoggedIn ? null : <Redirect to="/login" />}
+          </Route>
+          <Route exact path="/message">
+            {" "}
+            <MessagePage />
+            {isLoggedIn ? null : <Redirect to="/login" />}
+          </Route>
           <Route
-            exact
             path="/login"
             render={(props) => (
               <Login
@@ -71,6 +87,7 @@ const App = () => {
             {isLoggedIn ? <Redirect to="/" /> : null}
           </Route>
         </Switch>
+        <Navbar />
       </div>
     </Router>
   );

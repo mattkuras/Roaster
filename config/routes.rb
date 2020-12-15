@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   post '/like', to: 'swipe#like'
   post '/dislike', to: 'swipe#dislike'
   post 'login', to: 'sessions#create'
+  get '/logged_in', to: 'sessions#is_logged_in?'
+
 
   get '*path', to: 'home#index', via: :all
 

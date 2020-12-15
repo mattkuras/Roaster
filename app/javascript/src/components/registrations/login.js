@@ -25,9 +25,8 @@ import './login.css'
     axios.post('/login', { account }, { withCredentials: true })
       .then(response => {
         if (response.data.logged_in) {
-          console.log(response.data)
           props.handleLogin(response.data)
-        //   redirect()
+          redirect()
          console.log('youre good')
         } else {
             setErrors(response.data.errors)
@@ -56,15 +55,9 @@ import './login.css'
   }
  
     return (
-      <div className='login-container'>
-        <div className='login-slogan'>
-          <p>You are what you do.</p>
-          <p>You decide what you do.</p>
-          <p>You decide who you are.</p>
-          <p>We're just here to remind you.</p>
-        </div>
+      <div className='login-page'>
+        <h1>Login</h1>
         <form className='login-form' onSubmit={handleSubmit}>
-          <h1>Habit<br /> Helper</h1>
           <input className='login-input'
             placeholder="email"
             type="text"

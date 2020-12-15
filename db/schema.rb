@@ -37,20 +37,4 @@ ActiveRecord::Schema.define(version: 2020_12_09_221019) do
     t.index ["account_id"], name: "index_likes_on_account_id"
   end
 
-  create_table "matches", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "matched_user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["matched_user_id"], name: "index_matches_on_matched_user_id"
-    t.index ["user_id"], name: "index_matches_on_user_id"
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
 end
